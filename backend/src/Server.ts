@@ -1,6 +1,7 @@
 import morgan from "morgan";
 import path from "path";
 import helmet from "helmet";
+import cors from "cors";
 
 import express, { NextFunction, Request, Response } from "express";
 import StatusCodes from "http-status-codes";
@@ -21,6 +22,9 @@ app.use(express.json());
 // Show routes called in console during development
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
+  app.use(cors({
+    origin: 'http://localhost:3001'
+  }))
 }
 
 // Security
