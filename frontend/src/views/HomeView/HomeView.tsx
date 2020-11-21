@@ -8,7 +8,11 @@ function HomeView() {
     <div className="s-view">
       <h1 className={styles.title}>Trivia</h1>
       <Link className={styles.link} to="/quiz">
-        <Button colorVariant="second" large={true} text="Practice mode" />
+        <Button
+          colorVariant="second"
+          sizeVariant="large"
+          text="Practice mode"
+        />
       </Link>
     </div>
   );

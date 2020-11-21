@@ -1,0 +1,42 @@
+.title {
+  font-weight: bold;
+  font-size: 36px;
+  margin-bottom: 1em;
+}
+
+@media (min-width: 540px) {
+  .title {
+    font-size: 48px;
+  }
+}
+
+@media (min-width: 960px) {
+  .title {
+    font-size: 72px;
+  }
+}
+
+.form {
+  padding: 20px;
+  max-width: 300px;
+}
+
+.error {
+  font-size: 16px;
+  color: var(--color-button-1);
+  display: block;
+  margin-bottom: 15px;
+}
+
+.input {
+  font-size: 16px;
+  width: 100%;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.buttonWrapper {
+  margin-bottom: 15px;
+}

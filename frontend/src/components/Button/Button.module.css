@@ -14,7 +14,12 @@
   text-overflow: ellipsis;
 }
 
-.Button.buttonLarge{
+.Button.buttonSmall {
+  padding: 5px;
+  width: 100%;
+}
+
+.Button.buttonLarge {
   font-size: 24px;
 }
 
@@ -23,6 +28,11 @@
     font-size: 24px;
     padding: 20px;
     border-radius: 20px;
+  }
+
+  .Button.buttonSmall {
+    padding: 5px;
+    font-size: 16px;
   }
 
   .Button.buttonLarge {

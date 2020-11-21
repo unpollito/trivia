@@ -2,11 +2,12 @@ import React from "react";
 import styles from "./Button.module.css";
 
 export type ColorVariant = "first" | "second" | "third" | "fourth";
+export type SizeVariant = "small" | "medium" | "large";
 
 interface ButtonProps {
   colorVariant: ColorVariant;
-  large?: boolean;
   onClick?: () => void;
+  sizeVariant?: SizeVariant;
   text: string;
 }
 
@@ -20,7 +21,13 @@ const variantMap = {
 function Button(props: ButtonProps) {
   const colorVariant =
     variantMap[props.colorVariant as ColorVariant] ?? styles.buttonFirst;
-  const sizeVariant = props.large ? styles.buttonLarge : "";
+  let sizeVariant = "";
+  if (props.sizeVariant === "small") {
+    sizeVariant = styles.buttonSmall;
+  } else if (props.sizeVariant === "large") {
+    sizeVariant = styles.buttonLarge;
+  }
+
   return (
     <div
       className={`${styles.Button} ${colorVariant} ${sizeVariant}`}

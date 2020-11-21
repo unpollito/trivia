@@ -20,7 +20,7 @@ function QuestionFeedback(props: QuestionFeedbackProps) {
       <Button
         colorVariant="second"
         onClick={props.onNextQuestion}
-        large={true}
+        sizeVariant="large"
         text={buttonText}
       />
     </div>
