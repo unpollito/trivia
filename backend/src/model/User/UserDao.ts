@@ -1,7 +1,8 @@
 import { IUserDao } from "./IUserDao";
 import { BaseDao } from "../BaseDao";
-import { User, UserIdentification } from "./User";
+import { User } from "./User";
 import { NoResultFoundException } from "../DbErrors";
+import { UserIdentification } from "../../../../shared/model/Login";
 
 export class UserDao extends BaseDao implements IUserDao {
   public async getById(id: number): Promise<User> {
@@ -16,13 +17,24 @@ export class UserDao extends BaseDao implements IUserDao {
     return queryResult.rows[0] as User;
   }
 
+  public async getByUsername(username: string): Promise<User> {
+    const query = {
+      text: 'SELECT * FROM "user" WHERE username = $1',
+      values: [username],
+    };
+    const queryResult = await this.client.query(query);
+    if (queryResult.rows.length === 0) {
+      throw new NoResultFoundException();
+    }
+    return queryResult.rows[0] as User;
+  }
+
   async insert(user: UserIdentification): Promise<void> {
     const query = {
       text: 'INSERT INTO "user"(username, password) VALUES ($1, $2)',
       values: [user.username, user.password],
     };
     await this.client.query(query);
-    return;
   }
 
   async update(user: User): Promise<void> {

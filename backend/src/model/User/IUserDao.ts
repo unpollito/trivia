@@ -1,4 +1,5 @@
-import { User, UserIdentification } from "./User";
+import { User } from "./User";
+import { UserIdentification } from "../../../../shared/model/Login";
 
 export interface IUserDao {
   getById: (id: number) => Promise<User>;

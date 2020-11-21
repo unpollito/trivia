@@ -1,12 +1,3 @@
-export interface User {
-  id: number;
-  username: string;
-  password: string;
-  answered_questions: number;
-  correct_questions: number;
-}
+import { UserIdentification, UserStats } from "../../../../shared/model/Login";
 
-export interface UserIdentification {
-  username: string;
-  password: string;
-}
+export interface User extends UserIdentification, UserStats {}
