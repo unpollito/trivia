@@ -9,7 +9,6 @@ import { Redirect } from "react-router-dom";
 
 interface QuizViewProps {
   isChallenge: boolean;
-  onQuizComplete: () => void;
 }
 
 function QuizView(props: QuizViewProps) {
@@ -45,7 +44,7 @@ function QuizView(props: QuizViewProps) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setIsAnswering(true);
     } else {
-      props.onQuizComplete();
+      setIsFinished(true);
     }
   };
 
@@ -62,7 +61,13 @@ function QuizView(props: QuizViewProps) {
       />
     );
   } else {
-    child = <QuestionFeedback />;
+    child = (
+      <QuestionFeedback
+        isCorrect={lastSuccess}
+        isLastQuestion={currentQuestionIndex === questions.length - 1}
+        onNextQuestion={onNextQuestion}
+      />
+    );
   }
 
   return <div className="s-view">{child}</div>;

@@ -6,14 +6,12 @@ import QuizView from "./views/QuizView/QuizView";
 import QuizCompleteView from "./views/QuizCompleteView/QuizCompleteView";
 
 function App() {
-  const onQuizComplete = () => {};
-
   return (
     <div className={styles.App}>
       <Router>
         <Switch>
           <Route path="/quiz">
-            <QuizView isChallenge={false} onQuizComplete={onQuizComplete} />
+            <QuizView isChallenge={false} />
           </Route>
           <Route path="/finish">
             <QuizCompleteView />
