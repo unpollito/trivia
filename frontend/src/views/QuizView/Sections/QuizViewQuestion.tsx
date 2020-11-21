@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./QuizViewQuestion.module.css";
-import { ClientQuestion } from "../../../../../shared/model/Question";
 import Button, { ColorVariant } from "../../../components/Button/Button";
+import { CleanQuestion } from "../../../api/loadQuestions";
 
 interface QuizViewQuestionProps {
   onAnswer: (answer: string) => any;
-  question: ClientQuestion;
+  question: CleanQuestion;
 }
 
 const buttonVariants: ColorVariant[] = ["first", "second", "third", "fourth"];
@@ -17,7 +17,7 @@ function QuizViewQuestion(props: QuizViewQuestionProps) {
         <Button
           colorVariant={buttonVariants[index]}
           onClick={() => props.onAnswer(answer)}
-          text={answer}
+          text={props.question.cleanAnswers[index]}
         />
       </div>
     );
@@ -26,7 +26,7 @@ function QuizViewQuestion(props: QuizViewQuestionProps) {
   return (
     <div className="s-view">
       <div className={styles.titleWrapper}>
-        <div className={styles.title}>{props.question.question}</div>
+        <div className={styles.title}>{props.question.cleanQuestion}</div>
       </div>
       <div className={styles.answers}>{answers}</div>
     </div>

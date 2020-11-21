@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { loadQuestions } from "../../api/loadQuestions";
-import { ClientQuestion } from "../../../../shared/model/Question";
+import { CleanQuestion, loadQuestions } from "../../api/loadQuestions";
 import QuizViewQuestion from "./Sections/QuizViewQuestion";
 import QuestionFeedback from "./Sections/QuestionFeedback";
 import { answerQuestion } from "../../api/answerQuestion";
@@ -13,7 +12,7 @@ interface QuizViewProps {
 
 function QuizView(props: QuizViewProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [questions, setQuestions] = useState([] as ClientQuestion[]);
+  const [questions, setQuestions] = useState([] as CleanQuestion[]);
   const [lastSuccess, setLastSuccess] = useState(true);
   const [isAnswering, setIsAnswering] = useState(true);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
