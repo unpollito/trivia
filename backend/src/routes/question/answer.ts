@@ -88,5 +88,7 @@ export const answerQuestion = async (req: Request, res: Response) => {
 
   await new DbTransaction(client, updateFunc).run();
   client.end();
-  return res.status(StatusCodes.OK).json({});
+  return res.status(StatusCodes.OK).json({
+    isCorrect: isAnswerCorrect,
+  });
 };
