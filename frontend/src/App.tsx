@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./App.module.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import HomeView from "./views/HomeView";
-import QuizView from "./views/QuizView";
-import QuizCompleteView from "./views/QuizCompleteView";
+import HomeView from "./views/HomeView/HomeView";
+import QuizView from "./views/QuizCompleteView/QuizView";
+import QuizCompleteView from "./views/QuizCompleteView/QuizCompleteView";
 
 function App() {
   return (
