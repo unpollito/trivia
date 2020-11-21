@@ -3,7 +3,6 @@ import styles from "./App.module.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomeView from "./views/HomeView/HomeView";
 import QuizView from "./views/QuizView/QuizView";
-import QuizCompleteView from "./views/QuizCompleteView/QuizCompleteView";
 
 function App() {
   return (
@@ -12,9 +11,6 @@ function App() {
         <Switch>
           <Route path="/quiz">
             <QuizView isChallenge={false} />
-          </Route>
-          <Route path="/finish">
-            <QuizCompleteView />
           </Route>
           <Route path="/">
             <HomeView />

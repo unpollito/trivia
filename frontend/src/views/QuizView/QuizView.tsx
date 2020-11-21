@@ -51,7 +51,7 @@ function QuizView(props: QuizViewProps) {
   if (isLoading) {
     child = <LoadingIndicator />;
   } else if (isFinished) {
-    child = <Redirect to="/success" />;
+    child = <Redirect to="/" />;
   } else if (isAnswering) {
     child = (
       <QuizViewQuestion
