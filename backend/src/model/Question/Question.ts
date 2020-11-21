@@ -1,18 +1,10 @@
 import { Difficulty } from "./Difficulty";
-
-export interface BaseQuestion {
-  id: number;
-  question: string;
-}
+import { BaseQuestion, ClientQuestion } from "../../../../shared/model/Question";
 
 export interface ServerQuestion extends BaseQuestion {
   difficulty: Difficulty;
   correct_answer: string;
   incorrect_answers: [string, string, string];
-}
-
-export interface ClientQuestion extends BaseQuestion {
-  answers: [string, string, string, string];
 }
 
 export const serverQuestionToClientQuestion = (

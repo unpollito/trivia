@@ -10,15 +10,11 @@ import { USER_ID } from "@shared/constants";
 import { UserQuestion } from "../../model/UserQuestion/UserQuestion";
 import { User } from "../../model/User/User";
 import { DbTransaction } from "../../db/DbTransaction";
-
-interface QuestionAnswer {
-  id: number;
-  answer: string;
-}
+import { AnswerRequestBody, AnswerResponseBody } from "../../../../shared/model/AnswerBody";
 
 export const answerQuestion = async (req: Request, res: Response) => {
   const client = await getDbClient();
-  const { id, answer } = req.body as QuestionAnswer;
+  const { id, answer } = req.body as AnswerRequestBody;
   const questionDao = new QuestionDao(client);
   let question: ServerQuestion;
 
@@ -90,5 +86,5 @@ export const answerQuestion = async (req: Request, res: Response) => {
   client.end();
   return res.status(StatusCodes.OK).json({
     isCorrect: isAnswerCorrect,
-  });
+  } as AnswerResponseBody);
 };
