@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 import { UserQuestionDao } from "../../model/UserQuestion/UserQuestionDao";
 import { QuestionDao } from "../../model/Question/QuestionDao";
 import { UserQuestion } from "../../model/UserQuestion/UserQuestion";
-import { ServerQuestion } from "../../model/Question/Question";
+import { ServerQuestion, serverQuestionToClientQuestion } from "../../model/Question/Question";
 import { difficultyNumberMap } from "../../model/Question/Difficulty";
 import { QUESTIONS_TO_LOAD, QUIZ_SIZE, USER_ID } from "@shared/constants";
 
@@ -22,7 +22,8 @@ export const getPracticeQuestions = async (req: Request, res: Response) => {
     userQuestionsPromise,
   ]);
   client.end();
-  const result = getSortedQuestions(questions, userQuestions);
+  const result = getSortedQuestions(questions, userQuestions)
+    .map(serverQuestionToClientQuestion);
   return res.status(StatusCodes.OK).json(result);
 };
 
