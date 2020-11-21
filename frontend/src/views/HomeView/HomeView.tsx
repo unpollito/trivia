@@ -5,10 +5,10 @@ import Button from "../../components/Button/Button";
 
 function HomeView() {
   return (
-    <div className={styles.HomeView}>
+    <div className="s-view">
       <h1 className={styles.title}>Trivia</h1>
       <Link className={styles.link} to="/quiz">
-        <Button text="Practice mode" variant="second" />
+        <Button colorVariant="second" large={true} text="Practice mode" />
       </Link>
     </div>
   );

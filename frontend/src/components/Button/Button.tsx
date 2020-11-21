@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "./Button.module.css";
 
-type Variant = "first" | "second" | "third" | "fourth";
+export type ColorVariant = "first" | "second" | "third" | "fourth";
 
 interface ButtonProps {
+  colorVariant: ColorVariant;
+  large?: boolean;
+  onClick?: () => void;
   text: string;
-  variant: Variant;
 }
 
 const variantMap = {
@@ -16,8 +18,17 @@ const variantMap = {
 };
 
 function Button(props: ButtonProps) {
-  let variant = variantMap[props.variant as Variant] ?? styles.buttonFirst;
-  return <div className={`${styles.Button} ${variant}`}>{props.text}</div>;
+  const colorVariant =
+    variantMap[props.colorVariant as ColorVariant] ?? styles.buttonFirst;
+  const sizeVariant = props.large ? styles.buttonLarge : "";
+  return (
+    <div
+      className={`${styles.Button} ${colorVariant} ${sizeVariant}`}
+      onClick={() => (props.onClick ? props.onClick() : null)}
+    >
+      {props.text}
+    </div>
+  );
 }
 
 export default Button;

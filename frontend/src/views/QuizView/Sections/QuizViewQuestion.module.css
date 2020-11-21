@@ -1,0 +1,51 @@
+.titleWrapper {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 24px;
+    padding: 1em;
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 0.25em;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+.answer {
+    width: 100%;
+    padding: 0.25em;
+    box-sizing: border-box;
+}
+
+@media (min-width: 540px) {
+    .title {
+        font-size: 32px;
+    }
+
+    .answers {
+        flex-direction: row;
+        flex-wrap: wrap;
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 960px) {
+    .title {
+        font-size: 42px;
+    }
+
+    .answer {
+        width: 50%;
+    }
+}
