@@ -1,7 +1,11 @@
 import { UserTokenData } from "../../../shared/model/Login";
 
+export const getAuthToken = (): string | null => {
+  return localStorage.getItem("authToken");
+};
+
 export const getLoginData = (): UserTokenData | null => {
-  const token = localStorage.getItem("authToken");
+  const token = getAuthToken();
   if (!token) {
     return null;
   }

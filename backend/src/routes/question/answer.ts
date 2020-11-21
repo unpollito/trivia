@@ -6,11 +6,13 @@ import { ServerQuestion } from "../../model/Question/Question";
 import { isNoResultFoundException } from "../../model/DbErrors";
 import { UserDao } from "../../model/User/UserDao";
 import { UserQuestionDao } from "../../model/UserQuestion/UserQuestionDao";
-import { USER_ID } from "@shared/constants";
 import { UserQuestion } from "../../model/UserQuestion/UserQuestion";
 import { User } from "../../model/User/User";
 import { DbTransaction } from "../../db/DbTransaction";
-import { AnswerRequestBody, AnswerResponseBody } from "../../../../shared/model/AnswerBody";
+import {
+  AnswerRequestBody,
+  AnswerResponseBody,
+} from "../../../../shared/model/AnswerBody";
 
 export const answerQuestion = async (req: Request, res: Response) => {
   const client = await getDbClient();
@@ -33,13 +35,14 @@ export const answerQuestion = async (req: Request, res: Response) => {
   const userQuestionDao = new UserQuestionDao(client);
   const userDao = new UserDao(client);
 
-  const userQuestionPromise = userQuestionDao.getOne(USER_ID, id).catch((e) => {
+  const userId = (req.user as User).id;
+  const userQuestionPromise = userQuestionDao.getOne(userId, id).catch((e) => {
     if (!isNoResultFoundException(e)) {
       throw e;
     }
     return null;
   });
-  const userPromise = userDao.getById(USER_ID).catch((e) => {
+  const userPromise = userDao.getById(userId).catch((e) => {
     if (isNoResultFoundException(e)) {
       return res.status(StatusCodes.NOT_FOUND).json({});
     }
@@ -64,7 +67,7 @@ export const answerQuestion = async (req: Request, res: Response) => {
       upsertQuestionPromise = userQuestionDao.update(userQuestion);
     } else {
       const newUserQuestion: UserQuestion = {
-        user_id: USER_ID,
+        user_id: userId,
         question_id: id,
         last_answer_correct: isAnswerCorrect,
         incorrect_answers: isAnswerCorrect ? 0 : 1,

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ClientQuestion } from "../../../shared/model/Question";
+import { getAuthHeaderConfig } from "./common/getAuthHeaderConfig";
 
 export interface CleanQuestion extends ClientQuestion {
   cleanQuestion: string;
@@ -12,7 +13,7 @@ export const loadQuestions = async (params: {
   const endpointName = params.isChallenge ? "challenge" : "practice";
   const url = `${process.env.REACT_APP_BACKEND_URL}/api/question/${endpointName}`;
   const questions = (await axios
-    .get(url)
+    .get(url, getAuthHeaderConfig())
     .then((result) => result.data)) as ClientQuestion[];
   return questions.map(cleanQuestion);
 };
