@@ -1,0 +1,55 @@
+.Button {
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: var(--color-button-2);
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (min-width: 540px) {
+  .Button {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 960px) {
+  .Button {
+    font-size: 42px;
+  }
+}
+
+.buttonFirst {
+  background-color: var(--color-button-1);
+}
+
+.buttonFirst:hover {
+  background-color: var(--color-button-1-highlight);
+}
+
+.buttonSecond {
+  background-color: var(--color-button-2);
+}
+
+.buttonSecond:hover {
+  background-color: var(--color-button-2-highlight);
+}
+
+.buttonThird {
+  background-color: var(--color-button-3);
+}
+
+.buttonThird:hover {
+  background-color: var(--color-button-3-highlight);
+}
+
+.buttonFourth {
+  background-color: var(--color-button-4);
+}
+
+.buttonFourth:hover {
+  background-color: var(--color-button-4-highlight);
+}

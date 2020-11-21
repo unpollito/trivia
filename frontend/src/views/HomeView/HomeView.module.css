@@ -1,0 +1,59 @@
+.HomeView {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 36px;
+  margin-bottom: 1em;
+}
+
+.link {
+  width: 80%;
+  display: block;
+}
+
+.practiceButton {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: var(--color-button-2);
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+
+.practiceButton:hover {
+  background-color: var(--color-button-2-highlight);
+}
+
+@media (min-width: 540px) {
+  .title {
+    font-size: 48px;
+  }
+
+  .link {
+    width: 500px;
+  }
+
+  .practiceButton {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 960px) {
+  .title {
+    font-size: 72px;
+  }
+
+  .practiceButton {
+    font-size: 42px;
+  }
+}
