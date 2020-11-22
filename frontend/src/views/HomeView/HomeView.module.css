@@ -16,6 +16,17 @@
   cursor: pointer;
 }
 
+.profile {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  cursor: pointer;
+}
+
+.profileLink {
+  color: #fff;
+}
+
 .practiceButton {
   width: 100%;
   padding: 20px;

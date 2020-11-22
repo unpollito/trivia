@@ -7,6 +7,7 @@ import LoginView from "./views/LoginView/LoginView";
 import { RouteProps } from "react-router";
 import { Redirect } from "react-router-dom";
 import { getLoginData } from "./helpers/loginData";
+import ProfileView from "./views/ProfileView/ProfileView";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <PrivateRoute path="/quiz">
             <QuizView isChallenge={false} />
+          </PrivateRoute>
+          <PrivateRoute path="/profile">
+            <ProfileView />
           </PrivateRoute>
           <PrivateRoute path="/">
             <HomeView />

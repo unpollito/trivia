@@ -1,0 +1,15 @@
+.username {
+  text-align: center;
+}
+
+.statsText {
+  font-size: 18px;
+  margin: 1em;
+  text-align: center;
+}
+
+.link {
+  margin-top: 1.5em;
+  width: 100%;
+  display: block;
+}

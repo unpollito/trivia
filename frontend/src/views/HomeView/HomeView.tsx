@@ -21,6 +21,11 @@ function HomeView() {
       <div onClick={logout} className={styles.logout}>
         Logout
       </div>
+      <div className={styles.profile}>
+        <Link to="/profile" className={styles.profileLink}>
+          Profile
+        </Link>
+      </div>
       <h1 className={styles.title}>Trivia</h1>
       <Link className={styles.link} to="/quiz">
         <Button
