@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { CleanQuestion, loadQuestions } from "../../api/loadQuestions";
+import { loadQuestions } from "../../api/loadQuestions";
 import QuizViewQuestion from "./Sections/QuizViewQuestion";
 import QuestionFeedback from "./Sections/QuestionFeedback";
 import { answerQuestion } from "../../api/answerQuestion";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import { Redirect } from "react-router-dom";
+import { ClientQuestion } from "../../../../shared/model/Question";
 
 interface QuizViewProps {
   isChallenge: boolean;
@@ -12,7 +13,7 @@ interface QuizViewProps {
 
 function QuizView(props: QuizViewProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [questions, setQuestions] = useState([] as CleanQuestion[]);
+  const [questions, setQuestions] = useState([] as ClientQuestion[]);
   const [lastSuccess, setLastSuccess] = useState(true);
   const [isAnswering, setIsAnswering] = useState(true);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
