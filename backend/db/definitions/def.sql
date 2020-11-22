@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS question (
     difficulty difficulty NOT NULL
 );
 
+CREATE INDEX ON question(difficulty);
+
 CREATE TABLE IF NOT EXISTS user_question(
     user_id INT,
     question_id INT,
@@ -36,3 +38,7 @@ CREATE TABLE IF NOT EXISTS user_question(
         FOREIGN KEY (question_id)
             REFERENCES question(id) ON DELETE CASCADE
 );
+
+CREATE INDEX ON user_question(last_answer_correct);
+CREATE INDEX ON user_question(correct_answer_count);
+CREATE INDEX ON user_question(incorrect_answer_count);
