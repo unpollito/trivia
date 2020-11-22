@@ -46,7 +46,7 @@ export default function ProfileView() {
         <p className={styles.statsText}>{statsText[0]}</p>
         <p className={styles.statsText}>{statsText[1]}</p>
         <Link className={styles.link} to="/">
-          <Button colorVariant="second" sizeVariant="large" text="Home" />
+          <Button colorVariant="second" text="Home" />
         </Link>
       </div>
     );
