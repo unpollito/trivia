@@ -5,8 +5,8 @@ export interface UserIdentification {
 
 export interface UserStats {
   id: number;
-  answered_questions: number;
-  correct_questions: number;
+  answered_question_count: number;
+  correct_question_count: number;
 }
 
 export interface LoginResponse {

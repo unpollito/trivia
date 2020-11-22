@@ -2,8 +2,8 @@ CREATE TABLE IF NOT EXISTS "user" (
     id SERIAL PRIMARY KEY,
     username VARCHAR(20) UNIQUE,
     password CHAR(60) NOT NULL,
-    answered_questions INT NOT NULL DEFAULT 0,
-    correct_questions INT NOT NULL DEFAULT 0
+    answered_question_count INT NOT NULL DEFAULT 0,
+    correct_question_count INT NOT NULL DEFAULT 0
 );
 
 DO $$ BEGIN
@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS user_question(
     user_id INT,
     question_id INT,
     last_answer_correct BOOLEAN,
-    correct_answers INT,
-    incorrect_answers INT,
+    correct_answer_count INT,
+    incorrect_answer_count INT,
     UNIQUE (user_id, question_id),
     CONSTRAINT fk_user
         FOREIGN KEY(user_id)

@@ -4,7 +4,7 @@ import { User } from "./User";
 import { NoResultFoundException } from "../DbErrors";
 import { UserIdentification } from "../../../../shared/model/Login";
 
-export class UserDao extends BaseDao implements IUserDao {
+export class UserDao extends BaseDao<User> implements IUserDao {
   public async getById(id: number): Promise<User> {
     const query = {
       text: 'SELECT * FROM "user" WHERE id = $1',
@@ -40,13 +40,13 @@ export class UserDao extends BaseDao implements IUserDao {
   async update(user: User): Promise<void> {
     const text =
       'UPDATE "user" SET username=$1, password=$2,' +
-      "              answered_questions=$3, correct_questions=$4" +
+      "              answered_question_count=$3, correct_question_count=$4" +
       "              WHERE id=$5";
     const values = [
       user.username,
       user.password,
-      user.answered_questions,
-      user.correct_questions,
+      user.answered_question_count,
+      user.correct_question_count,
       user.id,
     ];
     const query = { text, values };

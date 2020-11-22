@@ -1,19 +1,11 @@
 import { ServerQuestion } from "./Question";
-import { RandomSortParams } from "../BaseDao";
+import { CustomSortParams, RandomSortParams } from "../BaseDao";
 
 export type ServerQuestionWithoutId = Omit<ServerQuestion, "id">;
 
-export interface QuestionSortField {
-  name: "difficulty";
-  isAscending: boolean;
-}
-
-export interface QuestionCustomSort {
-  random: false;
-  fields: QuestionSortField[];
-}
-
-export type QuestionSortParams = RandomSortParams | QuestionCustomSort;
+export type QuestionSortParams =
+  | RandomSortParams
+  | CustomSortParams<ServerQuestion>;
 
 export interface IQuestionDao {
   getList(count: number, sort?: QuestionSortParams): Promise<ServerQuestion[]>;

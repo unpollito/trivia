@@ -58,10 +58,10 @@ export const answerQuestion = async (req: Request, res: Response) => {
 
     if (userQuestion) {
       if (isAnswerCorrect) {
-        userQuestion.correct_answers += 1;
+        userQuestion.correct_answer_count += 1;
         userQuestion.last_answer_correct = true;
       } else {
-        userQuestion.incorrect_answers += 1;
+        userQuestion.incorrect_answer_count += 1;
         userQuestion.last_answer_correct = false;
       }
       upsertQuestionPromise = userQuestionDao.update(userQuestion);
@@ -70,15 +70,15 @@ export const answerQuestion = async (req: Request, res: Response) => {
         user_id: userId,
         question_id: id,
         last_answer_correct: isAnswerCorrect,
-        incorrect_answers: isAnswerCorrect ? 0 : 1,
-        correct_answers: isAnswerCorrect ? 1 : 0,
+        incorrect_answer_count: isAnswerCorrect ? 0 : 1,
+        correct_answer_count: isAnswerCorrect ? 1 : 0,
       };
       upsertQuestionPromise = userQuestionDao.insert(newUserQuestion);
     }
 
-    user.answered_questions += 1;
+    user.answered_question_count += 1;
     if (isAnswerCorrect) {
-      user.correct_questions += 1;
+      user.correct_question_count += 1;
     }
     const updateUserPromise = userDao.update(user);
 
