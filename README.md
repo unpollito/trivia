@@ -19,7 +19,7 @@ npm i
 ## Running
 
 ### Development
-This will run the frontend on localhost:3001 and the frontend on localhost:3000:
+This will run the frontend on localhost:3001 and the backend on localhost:3000.
 
 ```
 cd frontend
